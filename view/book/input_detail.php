@@ -27,6 +27,13 @@ $categories = FetchAllCategoryUseCase::execute();
             <h1>小説を作成する</h1>
         </section>
 
+        <?php
+        if (isset($_SESSION['error_message'])) {
+            echo '<div class="is-flex is-justify-content-center">' .'<p class=has-text-danger>'. $_SESSION['error_message'] .'</p>'. '</div>';
+            unset($_SESSION['error_message']);
+        }          
+        ?>
+
         <form action="/seiran/src/usecase/book/PublishBookUseCase.php" method="POST" enctype="multipart/form-data">
             <div class="container mb-6">
                 <div class="field">
